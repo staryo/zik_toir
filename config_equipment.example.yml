@@ -1,0 +1,3 @@
+path: 'path/to/folder'
+pattern: 'bfg_equipment_dop_'
+use_groups: False

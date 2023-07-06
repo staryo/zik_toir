@@ -125,18 +125,6 @@ def backup_file_from_ftp(ftp_client, path, backup_path):
 
 
 if __name__ == '__main__':
-    sftpURL = 'kk-srv-bfg2.npo.izhmash'
-    sftpUser = 'a.a.stolov'
-    sftpPass = ';tyfrfnz061083'
-    sftpPath = '/home/http_request_collector/app/data/input/data/POST'
-    exclude_list = [
-        '/home/http_request_collector/app/data/input/data/POST/2020-08-20',
-        '/home/http_request_collector/app/data/input/data/POST/2020-08-25',
-        '/home/http_request_collector/app/data/input/data/POST/2020-08-26',
-        '/home/http_request_collector/app/data/input/data/POST/2020-08-27',
-
-    ]
-    backup = '/home/work/Исходные данные/KK/1feb'
     # read_tech_from_ftp(sftpURL, sftpUser, sftpPass,
     #                    sftpPath, backup_path, exclude_list)
 

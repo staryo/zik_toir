@@ -3,3 +3,6 @@ PyYAML==6.0
 setuptools==68.0.0
 wheel==0.40.0
 XlsxWriter==3.1.2
+paramiko~=3.2.0
+tqdm~=4.65.0
+logic~=0.2.3

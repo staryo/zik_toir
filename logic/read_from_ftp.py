@@ -8,7 +8,7 @@ from tqdm import tqdm
 
 from logic.xml_tools import get_text_value
 # from script_plan import read_from_file
-# from script_toir import read_toir_from_file
+from script_toir import read_toir_from_file
 from script_zik import read_zik_from_file
 
 

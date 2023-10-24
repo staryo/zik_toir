@@ -114,12 +114,12 @@ def main():
     equipment_department = {}
     equipment_class = {}
     for row in toir_data:
+        equipment_class[row['ID']] = row['EQUIPMENT_ID']
+        equipment_department[row['ID']] = translate_deptid(row['DEPT_ID'])
         if row['USAGE'] != 'В ремонте':
             if row['ID'] in repair_list['repair_list']:
                 del repair_list['repair_list'][row['ID']]
             continue
-        equipment_class[row['ID']] = row['EQUIPMENT_ID']
-        equipment_department[row['ID']] = translate_deptid(row['DEPT_ID'])
         repair_time[row['ID']] = int(row['REPAIR_TIME'].split()[0])
         if row['ID'] not in repair_list['repair_list']:
             repair_list['repair_list'][row['ID']] = datetime.now().replace(

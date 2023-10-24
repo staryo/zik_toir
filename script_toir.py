@@ -10,7 +10,7 @@ from xlsxwriter import Workbook
 
 from tqdm import tqdm
 
-from logic.xml_tools import get_text_value
+from logic.xml_tools import get_text_value, get_date_value
 
 
 def save(sheets, filename):
@@ -56,8 +56,8 @@ def read_toir_from_file(xml_file):
         'EQUIPMENT_GROUP_NAME': get_text_value(equipment, "EQUIPMENT_GROUP_NAME"),
         'USAGE': get_text_value(equipment, "USAGE"),
         'REPAIR_TIME': get_text_value(equipment, "REPAIR_TIME"),
-        'DATE_FROM': get_text_value(equipment, "DATE_FROM"),
-        'DATE_TO': get_text_value(equipment, "DATE_TO"),
+        'DATE_FROM': get_date_value(equipment, "DATE_FROM"),
+        'DATE_TO': get_date_value(equipment, "DATE_TO"),
     } for equipment in tqdm(rows, desc='Считываем XML')]
 
     return report
@@ -145,8 +145,8 @@ def main():
         if (row['DATE_FROM'] is None) or (row['DATE_TO'] is None):
             continue
         unavailability.append({
-            'DATE_FROM': row['DATE_FROM'],
-            'DATE_TO': row['DATE_TO'],
+            'DATE_FROM': row['DATE_FROM'].strftime('%Y-%m-%d %H:%M:%S'),
+            'DATE_TO': row['DATE_TO'].strftime('%Y-%m-%d %H:%M:%S'),
             'DEPARTMENT_ID': equipment_department[row['ID']],
             'EQUIPMENT_CLASS_ID': equipment_class[row['ID']],
             'EQUIPMENT_ID': row['ID']

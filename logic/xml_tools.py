@@ -1,9 +1,20 @@
+from datetime import datetime
+
+
 def get_text_value(tree, key):
     if tree.find(key) is None:
         return
     if tree.find(key).text is None:
         return
     return tree.find(key).text.replace('\"', '')
+
+
+def get_date_value(tree, key):
+    if tree.find(key) is None:
+        return
+    if tree.find(key).text is None:
+        return
+    return datetime.strptime(tree.find(key).text, '%d.%m.%Y %H:%M:%S')
 
 
 def get_float_value(tree, key):

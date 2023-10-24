@@ -14,7 +14,10 @@ def get_date_value(tree, key):
         return
     if tree.find(key).text is None:
         return
-    return datetime.strptime(tree.find(key).text, '%d.%m.%Y %H:%M:%S')
+    try:
+        return datetime.strptime(tree.find(key).text, '%d.%m.%Y %H:%M:%S')
+    except ValueError:
+        return
 
 
 def get_float_value(tree, key):

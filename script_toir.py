@@ -147,9 +147,9 @@ def main():
         unavailability.append({
             'DATE_FROM': row['DATE_FROM'],
             'DATE_TO': row['DATE_TO'],
-            'DEPARTMENT_ID': equipment_department[equipment],
-            'EQUIPMENT_CLASS_ID': equipment_class[equipment],
-            'EQUIPMENT_ID': equipment
+            'DEPARTMENT_ID': equipment_department[row['ID']],
+            'EQUIPMENT_CLASS_ID': equipment_class[row['ID']],
+            'EQUIPMENT_ID': row['ID']
         })
 
     save(

@@ -15,7 +15,7 @@ def get_date_value(tree, key):
     if tree.find(key).text is None:
         return
     try:
-        return datetime.strptime(tree.find(key).text, '%d.%m.%Y %H:%M:%S')
+        return datetime.strptime(tree.find(key).text.replace('"', ""), '%d.%m.%Y %H:%M:%S')
     except ValueError:
         return
 

@@ -144,6 +144,8 @@ def main():
     for row in toir_data:
         if (row['DATE_FROM'] is None) or (row['DATE_TO'] is None):
             continue
+        if row['DATE_FROM'] == row['DATE_TO']:
+            continue
         unavailability.append({
             'DATE_FROM': row['DATE_FROM'].strftime('%Y-%m-%d %H:%M:%S'),
             'DATE_TO': row['DATE_TO'].strftime('%Y-%m-%d %H:%M:%S'),

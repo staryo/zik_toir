@@ -56,6 +56,8 @@ def read_toir_from_file(xml_file):
         'EQUIPMENT_GROUP_NAME': get_text_value(equipment, "EQUIPMENT_GROUP_NAME"),
         'USAGE': get_text_value(equipment, "USAGE"),
         'REPAIR_TIME': get_text_value(equipment, "REPAIR_TIME"),
+        'DATE_FROM': get_text_value(equipment, "DATE_FROM"),
+        'DATE_TO': get_text_value(equipment, "DATE_TO"),
     } for equipment in tqdm(rows, desc='Считываем XML')]
 
     return report
@@ -138,6 +140,17 @@ def main():
             'EQUIPMENT_ID': equipment
         } for equipment, date_from in repair_list['repair_list'].items()
     ]
+
+    for row in toir_data:
+        if (row['DATE_FROM'] is None) or (row['DATE_TO'] is None):
+            continue
+        unavailability.append({
+            'DATE_FROM': row['DATE_FROM'],
+            'DATE_TO': row['DATE_TO'],
+            'DEPARTMENT_ID': equipment_department[equipment],
+            'EQUIPMENT_CLASS_ID': equipment_class[equipment],
+            'EQUIPMENT_ID': equipment
+        })
 
     save(
         {

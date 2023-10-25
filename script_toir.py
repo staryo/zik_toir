@@ -131,10 +131,8 @@ def main():
 
     unavailability = [
         {
-            'DATE_FROM': date_from.strftime('%Y-%m-%d %H:%M:%S'),
-            'DATE_TO': (
-                    date_from + timedelta(days=repair_time[equipment])
-            ).strftime('%Y-%m-%d %H:%M:%S'),
+            'DATE_FROM': f"{date_from.strftime('%Y-%m-%d %H:%M:%S')}+04:00",
+            'DATE_TO': f"{(date_from + timedelta(days=repair_time[equipment])).strftime('%Y-%m-%d %H:%M:%S')}+04:00",
             'DEPARTMENT_ID': equipment_department[equipment],
             'EQUIPMENT_CLASS_ID': equipment_class[equipment],
             'EQUIPMENT_ID': equipment
@@ -147,8 +145,8 @@ def main():
         if row['DATE_FROM'] == row['DATE_TO']:
             continue
         unavailability.append({
-            'DATE_FROM': row['DATE_FROM'].strftime('%Y-%m-%d %H:%M:%S'),
-            'DATE_TO': row['DATE_TO'].strftime('%Y-%m-%d %H:%M:%S'),
+            'DATE_FROM': f"{row['DATE_FROM'].strftime('%Y-%m-%d %H:%M:%S')}+04:00",
+            'DATE_TO': f"{row['DATE_TO'].strftime('%Y-%m-%d %H:%M:%S')}+04:00",
             'DEPARTMENT_ID': equipment_department[row['ID']],
             'EQUIPMENT_CLASS_ID': equipment_class[row['ID']],
             'EQUIPMENT_ID': row['ID']
